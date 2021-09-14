@@ -1,0 +1,64 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using System.Globalization
+@using Microsoft.AspNetCore.Localization;
+
+@model AdvancedProgramming_Lesson2.Models.Schedule
+
+@inject IHtmlLocalizer<SharedResource> SharedLocalizer
+
+<h1>@SharedLocalizer["Create"]</h1>
+
+<h3>@SharedLocalizer["Are you sure?"]</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Subject)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Subject)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Lecturer)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Lecturer)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.StartSubjectDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.StartSubjectDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EndSubjectDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EndSubjectDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value=@SharedLocalizer["Delete"] class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-primary">@SharedLocalizer["Back to list"]</a>
+    </form>
+</div>

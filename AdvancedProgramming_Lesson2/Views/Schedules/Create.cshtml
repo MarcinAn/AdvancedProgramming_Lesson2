@@ -1,0 +1,67 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using System.Globalization
+@using Microsoft.AspNetCore.Localization;
+
+@model AdvancedProgramming_Lesson2.Models.Schedule
+
+@inject IHtmlLocalizer<SharedResource> SharedLocalizer
+
+<h1>@SharedLocalizer["Create"]</h1>
+
+<h4>@SharedLocalizer["Schedule"]</h4>
+<div>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Subject" class="control-label"></label>
+                    <input asp-for="Subject" class="form-control" />
+                    <span asp-validation-for="Subject" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Lecturer" class="control-label"></label>
+                    <input asp-for="Lecturer" class="form-control" />
+                    <span asp-validation-for="Lecturer" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="StartSubjectDate" class="control-label"></label>
+                    <input asp-for="StartSubjectDate" class="form-control" />
+                    <span asp-validation-for="StartSubjectDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="EndSubjectDate" class="control-label"></label>
+                    <input asp-for="EndSubjectDate" class="form-control" />
+                    <span asp-validation-for="EndSubjectDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Type" class="control-label"></label>
+                    <div class="control-label">
+                        <select asp-for="Type" asp-items="Html.GetEnumSelectList<Types>()">
+                            <option selected="selected" value="">@SharedLocalizer["Please choose"]</option>
+                        </select>
+                        <span asp-validation-for="Type" class="text-danger" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label"></label>
+                    <input asp-for="Description" class="form-control" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value=@SharedLocalizer["Create"] class="btn btn-primary" />
+                    <a asp-action="Index" class="btn btn-primary">@SharedLocalizer["Back to list"]</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
